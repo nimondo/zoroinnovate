@@ -15,7 +15,6 @@ export class AuthGuardService {
   | Promise<boolean | UrlTree>
   | boolean
   | UrlTree {
-    console.log('praprika',this.authService.isConnected());
   if (!this.authService.isConnected()) {
     // this.toastr.info('Please Log In!');
     this.router.navigate(['/auth']);

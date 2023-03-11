@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Observer} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
 import { environment } from 'src/environments/environment.development'; 
 import { User } from '../models/user';
@@ -12,23 +12,27 @@ export class AuthService {
   url: string = environment.apiUrl;
   constructor(private http: HttpClient) { }
   
-  signInUser(email: string, password: string) {
-    this.getUserList().subscribe((data: User[]) =>{
+  signInUser(email: string, password: string): Observable<boolean> {
+    return new Observable((observer) => {
+   let observable =  this.getUserList()
+   observable.subscribe((data: User[]) =>{
     let user = data.filter((user)=>{
      return  user.email === email &&  user.password === password
     })
     if(user.length>0){
-      return true
+      localStorage.setItem('userActive', 'ok');
+      localStorage.setItem('userId', `${user[0].id}`);
+      localStorage.setItem('email', `${user[0].email}`);
+      observer.next(true)
     }else{
-      return false
+      observer.next(false)
     }
     });
-    
-
+    })
   }
   isConnected(): boolean {
     // const token = this.getToken();
-    return false;
+    return localStorage.getItem('userActive')== 'ok' ? true: false;
   }
   putUser(supplier: number, id: number): Observable<any> {
     return this.http.put(

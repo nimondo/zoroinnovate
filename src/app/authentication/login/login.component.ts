@@ -42,8 +42,20 @@ export class LoginComponent {
     onSubmit() {
       const email = this.signinForm.get('email')?.value;
       const password = this.signinForm.get('password')?.value;
-      console.log(this.authService.signInUser(email, password))
-    }
+      this.authService.signInUser(email, password).subscribe(
+        res => {
+          if(res){
+            this.openSnackBar('Connexion réussie', email);
+            this.router.navigateByUrl('contact');
+          }else{
+            this.openSnackBar('erreur lors de la connexion', 'Vérifiez vos identifiants');
+          }
+        },
+        err => {
+          this.openSnackBar('Connexion echouee', email);
+        }
+      )
+   }
    
 
 }
