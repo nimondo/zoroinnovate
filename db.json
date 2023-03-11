@@ -1,8 +1,8 @@
 {
-  "contacts": [
-    { "id": 1, "nom": "admin", "prenom": "admin", "role": "admin", "password":"admin123", "email":"admin@admin.com"}
-  ],
   "users": [
-    { "id": 1, "nom": "contact", "prenom": "contact", "entreprise":1 }
+    { "id": 1, "firstname": "admin", "lastname": "admin", "role": "admin", "password":"admin123", "email":"admin@admin.com"}
+  ],
+  "contacts": [
+    { "id": 1, "lastname": "contact", "firstname": "contact", "qddress": "LOme Togo","entreprise":1 }
   ]
 }

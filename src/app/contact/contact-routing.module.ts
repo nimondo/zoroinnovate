@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact/contact.component'; 
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 
 const routes: Routes = [
-  { path: '',  component: ContactComponent, children: [
+  { path: '', canActivate: [AuthGuardService],   component: ContactComponent, children: [
     // { path: '', component: PageComponent},
    
       ]},

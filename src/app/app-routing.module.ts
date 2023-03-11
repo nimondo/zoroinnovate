@@ -3,10 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 const routes: Routes = [
   {
-    path:       '',
-    component:  AppComponent,
-  },
-  {
     path: 'contact',
     loadChildren: () => import('./contact/contact.module')
       .then(mod => mod.ContactModule)
@@ -16,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./authentication/authentication.module')
       .then(mod => mod.AuthenticationModule)
   },
-  { path: '',   redirectTo: '', pathMatch: 'full' },
+  { path: '',   redirectTo: 'contact', pathMatch: 'full' },
   { path: '**', redirectTo: '/' }
 ];
 
