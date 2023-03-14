@@ -19,7 +19,10 @@ export class ContactService {
   }
 
   getContact(id: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/users/${id}`);
+    return this.http.get<any>(`${this.url}/contacts/${id}`);
+  }
+  deleteContact(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/contacts/${id}`);
   }
 
   getContactList(): Observable<Contact[]> {

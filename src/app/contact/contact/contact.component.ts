@@ -24,6 +24,10 @@ export class ContactComponent {
     ngOnInit() {
       this.contactService.getContactList().subscribe(
         (data: Contact[]) =>{
+          let userId = localStorage.getItem('userId');
+          data.filter((e)=>{
+            return e.author == userId
+          })
         this.contacts = data;
     },
     err => {
@@ -45,12 +49,37 @@ export class ContactComponent {
   reload(){
     this.contactService.getContactList().subscribe(
       (data: Contact[]) =>{
-      this.contacts = data;
+        let userId = localStorage.getItem('userId');
+        data.filter((e)=>{
+          return e.author == userId
+        })
   },
   err => {
     this.snackBar.openSnackBar('Une erreur est survenue', 'ok');
   }
   )
+  }
+
+  updateContact(id:number|undefined){
+
+    this.router.navigate(['/contact', 'add', id]);
+  }
+
+  deleteContact(id:number|undefined){
+
+    if (confirm("Confirmez la suppression") == true) {
+      this.contactService.deleteContact(id!).subscribe(
+        (data) =>{
+          this.snackBar.openSnackBar('Suppression ok', 'ok');
+          this.reload();
+    },
+    err => {
+      this.snackBar.openSnackBar('Une erreur est survenue', 'ok');
+    }
+    )
+    } else {
+      this.snackBar.openSnackBar('Suppression annulee', 'ok');
+    }
   }
 
 }

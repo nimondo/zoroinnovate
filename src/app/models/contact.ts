@@ -7,6 +7,6 @@ export class Contact {
     poste?: string;
     address?: string;
     entrepriseName?: string;
-    author?: string;
+    author: string;
 
 }

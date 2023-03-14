@@ -1,1 +1,132 @@
-<p>add-contact works!</p>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <app-sidebar>
+
+        </app-sidebar>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <app-header></app-header>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">{{contact ? 'Modifier': 'Ajouter'}} contact</h1>
+                        <a  (click)="deleteContact(idNum)" class="d-none d-sm-inline-block btn btn-danger btn-sm btn-dangershadow-sm"><i
+                            class="fa fa-trash fa-sm text-white-50"></i>supprimer</a>
+                       
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Mes contacts</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="col-lg-12">
+                                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                              <label for="inputCity">Nom</label>
+                                              <input type="text" class="form-control" formControlName="lastname">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                              <label for="inputState">Prenom</label>
+                                              <input type="text" class="form-control" formControlName="firstname">
+                                            </div>
+                                          </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Email</label>
+                                            <input type="email" class="form-control" formControlName="email">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="inputPoste">Poste</label>
+                                            <input type="text" class="form-control" formControlName="poste">
+                                          </div>
+                                        </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="entrepriseName">Entreprise</label>
+                                            <input type="text" class="form-control" formControlName="entrepriseName">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="phoneNumber">Numero du contact</label>
+                                            <input type="text" class="form-control" formControlName="phoneNumber" >
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="address">Address</label>
+                                          <input type="text" class="form-control" id="inputAddress" formControlName="address">
+                                        </div>
+                                       
+                                        
+                                        
+                                        <button type="submit" type="submit" [disabled]="contactForm.invalid" class="btn btn-primary">{{contact ? 'Modifier': 'Ajouter'}} </button>
+                                      </form>
+                                </div>
+                              
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <app-footer></app-footer>
+            <!-- Footer -->
+            
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
