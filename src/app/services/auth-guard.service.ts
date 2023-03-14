@@ -15,6 +15,7 @@ export class AuthGuardService {
   | Promise<boolean | UrlTree>
   | boolean
   | UrlTree {
+    
   if (!this.authService.isConnected()) {
     // this.toastr.info('Please Log In!');
     this.router.navigate(['/auth']);

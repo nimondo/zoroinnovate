@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router, ActivatedRoute, RoutesRecognized, NavigationEnd } from '@angular/router';
-import { pairwise, filter} from 'rxjs/operators';
+import { Router, ActivatedRoute} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

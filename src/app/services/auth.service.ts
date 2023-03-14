@@ -32,7 +32,7 @@ export class AuthService {
   }
   isConnected(): boolean {
     // const token = this.getToken();
-    return localStorage.getItem('userActive')== 'ok' ? true: false;
+    return localStorage.getItem('userActive') == 'ok' ? true: false;
   }
   putUser(supplier: number, id: number): Observable<any> {
     return this.http.put(
@@ -53,5 +53,12 @@ export class AuthService {
       `${this.url}/users`,
       {user}
     );
+  }
+
+  logout(){
+    localStorage.setItem('userActive', '');
+    localStorage.setItem('userId', '');
+    localStorage.setItem('email', '');
+
   }
 }
