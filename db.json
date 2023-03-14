@@ -11,6 +11,7 @@
   ],
   "contacts": [
     {
+      "contact": {
         "id": 1,
         "lastname": "contact",
         "firstname": "contact",
@@ -20,6 +21,8 @@
         "phoneNumber": "+33789890989",
         "poste": "compyable",
         "entrepriseName": "ZORO"
-      }
+      },
+      "id": 1
+    }
   ]
 }
