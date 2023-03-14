@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-logout',
@@ -12,18 +12,13 @@ export class LogoutComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBar: SnackbarService) {
 
     }
 
     ngOnInit() {
       this.authService.logout()
-      this.openSnackBar('Deconnexion reussie', 'ok');
+      this.snackBar.openSnackBar('Deconnexion reussie', 'ok');
       this.router.navigate(['/']);
-    }
-    openSnackBar(message: string, action: string) {
-      this.snackBar.open(message, action, {
-        duration: 3000,
-      });
     }
 }

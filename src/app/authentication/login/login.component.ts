@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, ActivatedRoute} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar,
+    private snackBar: SnackbarService,
     private route: ActivatedRoute) {
 
     }
@@ -24,11 +24,6 @@ export class LoginComponent {
     ngOnInit() {
       this.initForm();
      
-    }
-    openSnackBar(message: string, action: string) {
-      this.snackBar.open(message, action, {
-        duration: 3000,
-      });
     }
   
     initForm() {
@@ -44,14 +39,14 @@ export class LoginComponent {
       this.authService.signInUser(email, password).subscribe(
         res => {
           if(res){
-            this.openSnackBar('Connexion réussie', email);
+            this.snackBar.openSnackBar('Connexion réussie', email);
             this.router.navigateByUrl('contact');
           }else{
-            this.openSnackBar('erreur lors de la connexion', 'Vérifiez vos identifiants');
+            this.snackBar.openSnackBar('erreur lors de la connexion', 'Vérifiez vos identifiants');
           }
         },
         err => {
-          this.openSnackBar('Connexion echouee', email);
+          this.snackBar.openSnackBar('Connexion echouee', email);
         }
       )
    }

@@ -3,6 +3,10 @@ export class Contact {
     lastname?: string;
     firstname?: string;
     email?: string;
-    paaword?: boolean;
-    role?: string;
+    phoneNumber?: string;
+    poste?: string;
+    address?: string;
+    entrepriseName?: string;
+    author?: string;
+
 }

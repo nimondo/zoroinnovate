@@ -97,13 +97,7 @@
               "browserTarget": "zoro_innovate:build:production"
             },
             "development": {
-              "browserTarget": "zoro_innovate:build:development",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "browserTarget": "zoro_innovate:build:development"
             }
           },
           "defaultConfiguration": "development"

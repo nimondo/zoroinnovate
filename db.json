@@ -3,6 +3,6 @@
     { "id": 1, "firstname": "admin", "lastname": "admin", "role": "admin", "password":"admin123", "email":"admin@admin.com"}
   ],
   "contacts": [
-    { "id": 1, "lastname": "contact", "firstname": "contact", "qddress": "LOme Togo","entreprise":1 }
+    { "id": 1, "lastname": "contact", "firstname": "contact", "address": "LOme Togo","author":1 , "email":"contact@contact.com", "phoneNumber":"+33789890989","poste":"compyable","entrepriseName":"ZORO"}
   ]
 }

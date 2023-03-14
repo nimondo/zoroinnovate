@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { environment } from 'src/environments/environment.development'; 
 import { Contact } from '../models/contact';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
-
+  url: string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  putContact(supplier: number, id: number): Observable<any> {
+  putContact(contact: Contact, id: number): Observable<any> {
     return this.http.put(
-      `/api/fulldigital/orders/${id}/supplier`,
-      { supplier }
+      `${this.url}/contacts/${id}`,
+      { contact }
     );
   }
 
-  getContact(order: number): Observable<any> {
-    return this.http.get<any>(`/api/fulldigital/quotes/catalogue/${order}/order-suppliers`);
+  getContact(id: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/users/${id}`);
   }
 
   getContactList(): Observable<Contact[]> {
-    return this.http.get<any>(`/api/fulldigital/quotes/suppliers-list`);
+    return this.http.get<any>(`${this.url}/contacts`);
   }
   createContact(contact: Contact): Observable<any> {
     return this.http.post(
-      `/api/fulldigital/quotes/${contact.id}/remote-instruction`,
-      {}
+      `${this.url}/contacts`,
+      {contact}
     );
   }
 
